@@ -10,9 +10,9 @@ pipeline {
         stage("Checkut"){
             steps{
                 checkout([
-                    $class: 'GitSCM'
+                    $class: 'GitSCM',
                     branches: [[name: "*/${params.repo_branch}"]],
-                    doGenerateSubmoduleConfigurations: false
+                    doGenerateSubmoduleConfigurations: false,
                     extensions: [[ $class: 'LocalBranch',localBranch: params.repo_branch]],
                     submoduleCfg: [],
                     userRemoteConfigs: [[url: params.repo_url, credentialsId: 'MY_GITHUB_ACCOUNT_01']]
