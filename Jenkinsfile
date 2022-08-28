@@ -1,13 +1,35 @@
 pipeline {
     
     agent any 
-// Stages
+    parameters {
+        string(name: 'repo_url', description: 'URL de repo GIT', defaultValue: 'https://github.com/BByme/testci.git')
+        string(name: 'repo_branch', description: 'Branch GIT', defaultValue: 'master')
+    }
         stages{
 
-        stage("One"){
+        stage("Checkout"){
+            
+            environment {
+                M2_HOME = tool 'MAVEN'
+                JAVA_HOME = tool 'JAVA_8'
+                PATH = "${env.JAVA_HOME}/bin:${env.M2_HOME}"
+            }
             steps{
-            sleep 10
-            echo 'hello'    
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: "*/${params.repo_branch}"]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[ $class: 'LocalBranch',localBranch: params.repo_branch]],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: params.repo_url, credentialsId: 'MY_GITHUB_ACCOUNT_01']]
+                ])
+                script {
+                sh 'echo Hello World'
+                mvn -version
+                java -version
+                }
+                
+
             }
         }    
 
