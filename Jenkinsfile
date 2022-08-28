@@ -10,7 +10,7 @@ pipeline {
         stage("Checkout"){
             
             //environment {
-              //  M2_HOME = tool 'MAVEN'
+                  M2_HOME = tool 'MAVEN'
                // JAVA_HOME = tool 'JAVA_8'
                 //PATH = "${env.JAVA_HOME}/bin:${env.M2_HOME}"
             //}
@@ -25,7 +25,7 @@ pipeline {
                 ])
                 //script {
                  sh 'echo Hello World'
-                 //sh 'mvn -version'
+                 sh 'mvn -version'
                  //sh 'java -version'
                 //}
                 
