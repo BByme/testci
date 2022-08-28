@@ -26,7 +26,7 @@ pipeline {
                 //script {
                  sh 'echo Hello World'
                  sh 'mvn -version'
-                 //sh 'java -version'
+                 sh 'java -version'
                 //}
                 
 
