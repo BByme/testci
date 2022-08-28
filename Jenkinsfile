@@ -25,7 +25,8 @@ pipeline {
                 ])
                 
                 sh 'echo HelloWorld'
-                sh 'echo ${PATH}'
+                mvn -version
+                java -version
 
             }
         }    
