@@ -25,8 +25,8 @@ pipeline {
                 ])
                 script {
                 sh 'echo Hello World'
-                mvn -version
-                java -version
+                sh 'mvn -version'
+                sh 'java -version'
                 }
                 
 
