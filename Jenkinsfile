@@ -7,7 +7,7 @@ pipeline {
     }
         stages{
 
-        stage("Checkut"){
+        stage("Checkout"){
             
             environment {
                 M2_HOME = tool 'MAVEN'
