@@ -8,6 +8,12 @@ pipeline {
         stages{
 
         stage("Checkut"){
+            
+            environment {
+                M2_HOME = tool 'MAVEN'
+                JAVA_HOME = tool 'JAVA_8'
+                PATH = "${env.JAVA_HOME}/bin:${env.M2_HOME}"
+            }
             steps{
                 checkout([
                     $class: 'GitSCM',
@@ -19,6 +25,7 @@ pipeline {
                 ])
                 script {
                     sh 'echo HelloWorld'
+                    sh '$PATH'
                 }
             }
         }    
