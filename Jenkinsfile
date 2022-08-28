@@ -23,10 +23,12 @@ pipeline {
                     submoduleCfg: [],
                     userRemoteConfigs: [[url: params.repo_url, credentialsId: 'MY_GITHUB_ACCOUNT_01']]
                 ])
-                
-                sh 'echo HelloWorld'
+                script {
+                sh 'echo Hello World'
                 mvn -version
                 java -version
+                }
+                
 
             }
         }    
