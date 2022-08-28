@@ -25,7 +25,7 @@ pipeline {
                 ])
                 script {
                     sh 'echo HelloWorld'
-                    sh '$PATH'
+                    sh 'echo ${PATH}'
                 }
             }
         }    
